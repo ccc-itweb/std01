@@ -1,0 +1,11 @@
+﻿version: "3"
+services:
+  mysql:
+    build: ./mysql/ # Dockerfileの指定
+    image: std-mysql-server # イメージ名
+    container_name: study-mysql # コンテナ名
+    volumes:
+      - ./mysql/seed:/docker-entrypoint-initdb.d # 初回データ実行
+      - ./mysql/db:/var/lib/mysql # データ永続化
+    environment:
+      - MYSQL_ROOT_PASSWORD=password # パスワード設定
